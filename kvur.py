@@ -1,6 +1,7 @@
-#import math
-#from rumath import koren
+# import math
+# from rumath import koren
 from math import sqrt as koren
+
 print('Программа для решения квадратных уравнений!')
 bad_data = True
 
@@ -14,7 +15,7 @@ while bad_data == True:
         print('Данные не привести к числу')
 
 D = (b * b) - (4 * a * c)
-print('Дискриминант равен:',D,'!')
+print('Дискриминант равен:', D, '!')
 
 if D > 0:
     d = koren(D)
