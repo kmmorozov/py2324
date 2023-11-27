@@ -4,6 +4,7 @@ connection = pymysql.connect(host='nadejnei.net', user='student', password='1q2w
 cursor = connection.cursor()
 cursor.execute('select name, phone  from telsprav')
 data = cursor.fetchall()
+print(data)
 connection.close()
 telsprav = {}
 for element in data:
