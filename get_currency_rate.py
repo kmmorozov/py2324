@@ -75,7 +75,7 @@ if __name__ == '__main__':
         logging.info(f'{datetime.datetime.now()} Начинаю вносить данные в ДБ')
         put_result = put_data_to_db(connection, cursor, data)  # положили данные в базу
         logging.info(f'{datetime.datetime.now()} Данные в ДБ внесены')
-        print(put_result)
+        #print(put_result)
     except ConnectionRefusedError as cre:
         logging.critical(f'{datetime.datetime.now()} Не удалось подключиться: {cre}')
     except pymysql.err.OperationalError as poe:
