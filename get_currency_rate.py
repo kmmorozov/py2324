@@ -26,7 +26,6 @@ def get_data_from_config():
 
 def get_data_from_cb(site):
     result = requests.get(site)
-
     valites = result.json()
 
     valutes_raw_dict = valites['Valute']
