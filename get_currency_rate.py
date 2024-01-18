@@ -48,7 +48,7 @@ def put_data_to_db(connection, cursor, data):
         cursor.execute(insert_string)
     connection.commit()
     connection.close()
-    return "commit - OK"
+    return "commit - OK!!!"
 
 
 def connect_to_db(host, user, password, database, port):
