@@ -1,3 +1,5 @@
+import sys
+
 import PySimpleGUI as sg
 import requests
 import matplotlib.pyplot as plt
@@ -34,9 +36,30 @@ layout2 = [[sg.InputText('Введите валюту', font='Helvetica 16'), sg
            #[sg.Canvas(key='canvas', size=(1500,800), background_color="white")],
            [sg.Button('Закрыть окно', font='Helvetica 16', enable_events=True, key='close_plot')]
            ]
+layout3 = [[sg.Text("Введите логин:", font='Helvetica 16'), sg.InputText(font='Helvetica 16', key='login')],
+            [sg.Text("Введите пароль:", font='Helvetica 16'), sg.InputText(font='Helvetica 16', key='pass')],
+            [sg.Button('OK', font='Helvetica 16', enable_events=True, key='enter_login')]
+           ]
+
 window = sg.Window("Обменник валют.", layout)
 
+auth = False
 while True:
+    if not auth:
+        auth_window = sg.Window("Аутентификация", layout3)
+        window.Hide()
+        auth_events, auth_values = auth_window.read()
+        print(auth_values)
+
+        if auth_values['login'] == 'kirill' and auth_values['pass'] == "123456":
+            auth_window.hide()
+            auth = True
+            pass
+        else:
+            sys.exit(1)
+
+
+
     # получаем события, произошедшие в окне
     event, values = window.read()
     # если нажали на крестик
@@ -75,8 +98,8 @@ while True:
                 plt.ylabel('Курс в рублях')
                 plt.title(f'Курс валюты {val} от {start_date} до {end_date}')
                 # plt.legend("123432523523")
-                #plt.plot(dates, rates)
-                plt.bar(dates, rates)
+                plt.plot(dates, rates)
+                #plt.bar(dates, rates)
                 plt.show()
 
 
